@@ -24,7 +24,7 @@ add /etc/hosts
 
     192.168.92.12 ghost-vm.me
 
-access <http://ghost-vm.me/ghost/signup/>
+setup blog <http://ghost-vm.me/ghost/signup/>
 
 dashboard <http://ghost-vm.me/ghost>
 
