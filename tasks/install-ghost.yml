@@ -1,0 +1,24 @@
+---
+
+- name: download ghost
+  get_url: url=https://ghost.org/zip/ghost-latest.zip dest=/var/tmp/ghost.zip
+
+- name: create dir
+  file: path=/var/www/ghost state=directory owner=nginx group=nginx mode=755
+
+- name: install unzip for unarchive module
+  yum: name=unzip
+
+- name: unarchive ghost
+  unarchive: src=/var/tmp/ghost.zip dest=/var/www/ghost copy=no
+
+- name: change owner
+  command: chown -R nginx. /var/www/ghost
+
+- name: set config.js
+  template: src=files/config-vm.js dest=/var/www/ghost/config.js owner=nginx group=nginx mode=0644
+
+- name: install ghost
+  shell: npm install --production
+  args:
+    chdir: /var/www/ghost

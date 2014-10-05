@@ -1,0 +1,16 @@
+- hosts: ghost-vm.me
+  user: vagrant
+  sudo: yes
+  tasks:
+    - include: tasks/selinux.yml
+    - include: tasks/epel.yml
+    - include: tasks/install-nginx.yml
+    - include: tasks/install-nodejs.yml
+    - include: tasks/install-ghost.yml
+    - include: tasks/install-forever.yml
+    - include: tasks/configure-vm-nginx.yml
+    - include: tasks/launch-ghost.yml
+
+  handlers:
+    - name: reload nginx
+      service: name=nginx state=reloaded

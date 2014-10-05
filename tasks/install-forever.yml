@@ -1,0 +1,4 @@
+---
+
+- name: install forever
+  npm: name=forever global=yes state=latest

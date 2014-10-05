@@ -1,0 +1,6 @@
+---
+
+- name: configure vhost
+  template: src=files/ghost-vm.me.conf dest=/etc/nginx/conf.d/ghost-vm.me.conf owner=nginx group=nginx mode=0644
+  notify:
+    - reload nginx

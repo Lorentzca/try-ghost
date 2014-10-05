@@ -1,0 +1,7 @@
+---
+
+- name: install nodejs
+  yum: name=nodejs enablerepo=epel state=latest
+
+- name: install npm
+  yum: name=npm enablerepo=epel state=latest

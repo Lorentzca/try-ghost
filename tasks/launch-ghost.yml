@@ -1,0 +1,10 @@
+---
+
+- name: check list of Node.js apps running
+  command: forever list
+  register: forever_list
+  changed_when: false
+
+- name: launch ghost
+  shell: NODE_ENV=production forever -a -l /var/log/forever.log start /var/www/ghost/index.js
+  when: "forever_list.stdout.find('/var/www/ghost/index.js') == -1"

@@ -1,0 +1,7 @@
+---
+
+- name: install nginx
+  yum: name=nginx enablerepo=epel state=latest
+
+- name: start and enable boot nginx
+  service: name=nginx state=started enabled=yes
